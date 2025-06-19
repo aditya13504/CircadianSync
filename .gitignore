@@ -1,6 +1,6 @@
-# Dependencies
-node_modules/
-package-lock.json
+# Dependencies - COMMENTED OUT TO INCLUDE IN REPO
+# node_modules/
+# package-lock.json
 
 # Environment files
 .env
