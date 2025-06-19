@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CircadianSync - Light Therapy Optimizer</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->        <header class="app-header">
+            <h1>CircadianSync</h1>
+            <div class="connection-status">
+                <span id="connection-icon" class="status-icon ready" role="status" aria-label="Connection status"></span>
+                <span id="connection-text">Ready for Analysis</span>                <button id="enter-details-btn" class="connect-button" aria-label="Enter sensor data">Enter Details</button>
+                <button id="test-viz-btn" class="connect-button" style="margin-left: 10px; background: #6366f1;" onclick="testVisualizations()">Test Viz</button>
+                <button id="simple-test-btn" class="connect-button" style="margin-left: 10px; background: #16a34a;" onclick="simpleVisualizationTest()">Simple Test</button>
+            </div>
+        </header>
+
+        <!-- Data Entry Panel -->
+        <div id="data-entry-panel" class="data-entry-panel">
+            <div class="panel-header">
+                <h2>Enter Light Sensor Data</h2>
+                <button id="close-panel-btn" class="close-btn">&times;</button>
+            </div>
+              <div class="data-entry-form">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Light Parameter</th>
+                            <th>Enter Your Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="parameter-label">
+                                <strong>Total Illuminance</strong>
+                                <small>Overall light intensity in your environment</small>
+                            </td>
+                            <td>
+                                <input type="text" id="input-lux" placeholder="e.g., 320 lux" class="data-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="parameter-label">
+                                <strong>Red Light Intensity</strong>
+                                <small>Red component of the light spectrum</small>
+                            </td>
+                            <td>
+                                <input type="text" id="input-red" placeholder="e.g., 95" class="data-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="parameter-label">
+                                <strong>Green Light Intensity</strong>
+                                <small>Green component of the light spectrum</small>
+                            </td>
+                            <td>
+                                <input type="text" id="input-green" placeholder="e.g., 125" class="data-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="parameter-label">
+                                <strong>Blue Light Intensity</strong>
+                                <small>Blue component of the light spectrum</small>
+                            </td>
+                            <td>
+                                <input type="text" id="input-blue" placeholder="e.g., 142" class="data-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="parameter-label">
+                                <strong>Color Temperature</strong>
+                                <small>Warmth/coolness of the light</small>
+                            </td>
+                            <td>
+                                <input type="text" id="input-colorTemp" placeholder="e.g., 4200K" class="data-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="parameter-label">
+                                <strong>Clear Light Reading</strong>
+                                <small>Unfiltered light sensor measurement</small>
+                            </td>
+                            <td>
+                                <input type="text" id="input-clear" placeholder="e.g., 362" class="data-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="parameter-label">
+                                <strong>Current Time</strong>
+                                <small>Time when the measurement was taken</small>
+                            </td>
+                            <td>
+                                <input type="text" id="input-time" placeholder="e.g., 10:30 AM" class="data-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="parameter-label">
+                                <strong>Location/Environment</strong>
+                                <small>Description of where you are</small>
+                            </td>
+                            <td>
+                                <input type="text" id="input-location" placeholder="e.g., Indoor Office, Near Window" class="data-input">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="form-actions">
+                    <button id="start-analysis-btn" class="start-analysis-btn">
+                        <span class="btn-text">Start Analysis</span>
+                        <span class="btn-icon">⚡</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Progress -->
+        <div id="analysis-progress" class="analysis-progress">
+            <div class="progress-content">
+                <h3>Analyzing Your Light Environment</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                        <div class="progress-text" id="progress-text">0%</div>
+                    </div>
+                </div>
+                <div class="progress-status" id="progress-status">Initializing analysis...</div>
+                <div class="progress-steps">
+                    <div class="step-indicator" id="step-1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Data Processing</span>
+                    </div>
+                    <div class="step-indicator" id="step-2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Spectral Analysis</span>
+                    </div>
+                    <div class="step-indicator" id="step-3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Circadian Calculation</span>
+                    </div>
+                    <div class="step-indicator" id="step-4">
+                        <span class="step-number">4</span>
+                        <span class="step-label">Recommendations</span>
+                    </div>
+                    <div class="step-indicator" id="step-5">
+                        <span class="step-number">5</span>
+                        <span class="step-label">Visualization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="overlay" class="overlay"></div>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard" role="main">
+            <!-- Real-time Metrics -->
+            <section class="metrics-grid" aria-label="Real-time light metrics">
+                <div class="metric-card primary">
+                    <h3>Melanopic Lux</h3>
+                    <div class="metric-value">
+                        <span id="melanopic-value" aria-live="polite">--</span>
+                        <span class="unit">mel-lux</span>
+                    </div>
+                    <div class="metric-status" id="melanopic-status" role="status">Waiting for data...</div>
+                </div>
+
+                <div class="metric-card">
+                    <h3>Light Temperature</h3>
+                    <div class="metric-value">
+                        <span id="color-temp" aria-live="polite">--</span>
+                        <span class="unit">K</span>
+                    </div>
+                    <div class="color-temp-bar" id="temp-visualization" role="img" aria-label="Color temperature visualization"></div>
+                </div>
+
+                <div class="metric-card">
+                    <h3>Blue Light Exposure</h3>
+                    <div class="metric-value">
+                        <span id="blue-light" aria-live="polite">--</span>
+                        <span class="unit">%</span>
+                    </div>
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        <div id="blue-light-bar" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <h3>Circadian Phase</h3>
+                    <div class="metric-value">
+                        <span id="phase-shift" aria-live="polite">--</span>
+                        <span class="unit">hours</span>
+                    </div>
+                    <div class="phase-indicator" id="phase-status" role="status">Aligned</div>
+                </div>
+
+                <!-- Novel Research Features -->
+                <div class="metric-card">
+                    <h3>Pupil Diameter</h3>
+                    <div class="metric-value">
+                        <span id="pupil-diameter" aria-live="polite">--</span>
+                        <span class="unit">mm</span>
+                    </div>
+                    <div class="metric-status">Based on ambient light estimation</div>
+                </div>
+
+                <div class="metric-card">
+                    <h3>Cognitive Performance</h3>
+                    <div class="metric-value">
+                        <span id="cognitive-performance" aria-live="polite">--</span>
+                        <span class="unit">%</span>
+                    </div>
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        <div id="cognitive-bar" class="progress-fill"></div>
+                    </div>
+                    <div class="metric-status">Light-adjusted performance prediction</div>
+                </div>
+
+                <div class="metric-card">
+                    <h3>Melatonin Suppression</h3>
+                    <div class="metric-value">
+                        <span id="melatonin-suppression" aria-live="polite">--</span>
+                        <span class="unit">%</span>
+                    </div>
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        <div id="melatonin-bar" class="progress-fill"></div>
+                    </div>
+                    <div class="metric-status">Estimated sleep hormone impact</div>
+                </div>
+
+                <div class="metric-card">
+                    <h3>Retinal Stress Score</h3>
+                    <div class="metric-value">
+                        <span id="retinal-stress" aria-live="polite">--</span>
+                        <span class="unit">/100</span>
+                    </div>
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                        <div id="stress-bar" class="progress-fill"></div>
+                    </div>
+                    <div class="metric-status">Blue light hazard assessment</div>
+                </div>
+
+                <div class="metric-card spectral-card">
+                    <h3>Spectral Analysis</h3>
+                    <div id="spectral-display" class="spectral-bars">
+                        <div class="spectral-bar red-bar"><span>--</span></div>
+                        <div class="spectral-bar green-bar"><span>--</span></div>
+                        <div class="spectral-bar blue-bar"><span>--</span></div>
+                    </div>
+                    <div class="spectral-info">
+                        <div>Balance: <span id="spectral-balance">--</span></div>
+                        <div>Peak: <span id="dominant-wavelength">--</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Circadian Clock Visualization -->
+            <section class="clock-section" aria-label="Circadian rhythm clock">
+                <div class="clock-container">
+                    <h2>Your Biological Clock</h2>
+                    <div id="circadian-clock" role="img" aria-label="24-hour circadian rhythm visualization"></div>
+                    <div class="clock-legend">
+                        <div class="legend-item">
+                            <span class="legend-color optimal" aria-hidden="true"></span>
+                            <span>Optimal Light</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color current" aria-hidden="true"></span>
+                            <span>Current Time</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommendations -->
+            <section class="recommendations" aria-label="Personalized light recommendations">
+                <h2>Personalized Recommendations</h2>
+                <div id="recommendation-cards" class="recommendation-grid" role="list">
+                    <!-- Dynamically populated -->
+                </div>
+            </section>
+
+            <!-- Action Timer -->
+            <section class="action-timer" id="action-section" style="display: none;" aria-label="Light intervention timer">
+                <h3>Light Intervention Timer</h3>
+                <div class="timer-display" role="timer" aria-live="assertive">
+                    <span id="timer-minutes">00</span>:<span id="timer-seconds">00</span>
+                </div>
+                <div id="timer-message" class="timer-message" role="status"></div>
+                <button id="start-timer" class="action-button" aria-label="Start light therapy session">Start Session</button>
+            </section>
+
+            <!-- Historical Data -->
+            <section class="history-section" aria-label="Light exposure history">
+                <h2>Today's Light Exposure</h2>
+                <div id="exposure-chart" role="img" aria-label="24-hour light exposure chart"></div>
+            </section>
+        </main>        <!-- Demo Mode Banner -->
+        <div id="demo-banner" class="demo-banner" style="display: none;" role="banner">
+            <p>🔬 Demo Mode: Using simulated sensor data</p>
+            <button id="toggle-demo" aria-label="Switch between demo and real sensor mode">Use Real Sensor</button>
+        </div>
+    </div>
+
+    <!-- Overlay for modals -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Load JavaScript Modules - Fixed with proper module loading -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

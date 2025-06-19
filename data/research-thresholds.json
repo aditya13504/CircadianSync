@@ -1,0 +1,45 @@
+{
+  "circadian_thresholds": {
+    "morning": {
+      "time_range": [6, 10],
+      "melanopic_target": 250,
+      "duration_minutes": 30,
+      "color_temp_range": [4000, 6500]
+    },
+    "day": {
+      "time_range": [10, 17],
+      "melanopic_target": 200,
+      "duration_minutes": 480,
+      "color_temp_range": [3500, 5500]
+    },
+    "evening": {
+      "time_range": [17, 21],
+      "melanopic_target": 50,
+      "duration_minutes": 240,
+      "color_temp_range": [2700, 3500]
+    },
+    "night": {
+      "time_range": [21, 6],
+      "melanopic_target": 10,
+      "duration_minutes": 540,
+      "color_temp_range": [1800, 2700]
+    }
+  },
+  "health_impacts": {
+    "melatonin_suppression": {
+      "threshold_lux": 30,
+      "percent_at_100_lux": 50,
+      "percent_at_1000_lux": 70
+    },
+    "alertness_boost": {
+      "threshold_lux": 100,
+      "optimal_lux": 250,
+      "duration_minutes": 15
+    },
+    "sleep_quality": {
+      "evening_max_lux": 50,
+      "pre_sleep_hours": 2,
+      "blue_light_cutoff": 480
+    }
+  }
+}

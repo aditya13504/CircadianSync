@@ -1,0 +1,547 @@
+/* Reusable Component Styles */
+
+/* Recommendation Cards */
+.recommendation-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    transition: var(--transition);
+}
+
+.recommendation-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+.recommendation-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.recommendation-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.recommendation-priority {
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.priority-high {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.priority-medium {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+}
+
+.priority-low {
+    background: rgba(74, 222, 128, 0.2);
+    color: #4ade80;
+}
+
+/* Status Indicators */
+.metric-status {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 10px;
+}
+
+.status-good {
+    color: var(--success);
+}
+
+.status-warning {
+    color: var(--warning);
+}
+
+.status-danger {
+    color: var(--danger);
+}
+
+/* Color Temperature Visualization */
+.color-temp-bar {
+    height: 20px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, 
+        #ff6b35 0%,    /* Warm */
+        #f7e98e 25%,   /* Neutral warm */
+        #ffffff 50%,   /* Neutral */
+        #9cc0e7 75%,   /* Cool */
+        #5c7cfa 100%); /* Very cool */
+    position: relative;
+    margin-top: 15px;
+}
+
+.temp-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 30px;
+    background: #000;
+    border-radius: 2px;
+    transition: left 0.5s ease;
+}
+
+/* Phase Indicator */
+.phase-indicator {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.phase-indicator.aligned {
+    background: rgba(74, 222, 128, 0.2);
+    color: var(--success);
+}
+
+.phase-indicator.delayed {
+    background: rgba(251, 191, 36, 0.2);
+    color: var(--warning);
+}
+
+.phase-indicator.advanced {
+    background: rgba(74, 158, 255, 0.2);
+    color: var(--accent-blue);
+}
+
+/* Charts Container */
+.chart-container {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+/* Loading States */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--accent-blue);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Tooltips */
+.tooltip {
+    position: absolute;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip.show {
+    opacity: 1;
+}
+
+/* Action Buttons */
+.action-button {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-orange));
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.action-button:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Error States */
+.error-message {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--danger);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.error-message::before {
+    content: '⚠️';
+    font-size: 1.2rem;
+}
+
+/* Novel Research Feature Styles */
+.metric-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+    transition: left 0.6s ease;
+}
+
+.metric-card.updating::before {
+    left: 100%;
+}
+
+/* Spectral Analysis Display */
+.spectral-card {
+    background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(255, 140, 66, 0.1));
+}
+
+.spectral-bars {
+    display: flex;
+    gap: 8px;
+    height: 60px;
+    align-items: flex-end;
+    margin: 15px 0;
+}
+
+.spectral-bar {
+    flex: 1;
+    background: var(--bg-secondary);
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    min-height: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 4px;
+}
+
+.spectral-bar span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.red-bar {
+    background: linear-gradient(to top, #dc2626, #ef4444);
+}
+
+.green-bar {
+    background: linear-gradient(to top, #16a34a, #22c55e);
+}
+
+.blue-bar {
+    background: linear-gradient(to top, #2563eb, #3b82f6);
+}
+
+.spectral-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Circadian Clock Enhancements */
+.clock-container {
+    text-align: center;
+    position: relative;
+}
+
+.fallback-clock {
+    background: radial-gradient(circle, rgba(74, 158, 255, 0.1), transparent);
+    border-radius: 50%;
+    width: 320px;
+    height: 320px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clock-face {
+    background: var(--bg-card);
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    border: 2px solid rgba(74, 158, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.time-display {
+    text-align: center;
+}
+
+.current-time .time-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-blue);
+}
+
+.bio-time .time-value {
+    font-size: 1.4rem;
+    color: var(--accent-orange);
+}
+
+.phase-info, .melanopic-info {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.phase-value {
+    font-weight: 600;
+}
+
+.melanopic-value {
+    color: #50fa7b;
+    font-weight: 600;
+}
+
+/* Progress Bar Enhancements */
+.progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 8px;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Recommendation Card Priority Indicators */
+.recommendation-card.priority-critical {
+    border-left: 4px solid var(--danger);
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.recommendation-card.priority-high {
+    border-left: 4px solid var(--warning);
+    background: rgba(251, 191, 36, 0.05);
+}
+
+.recommendation-card.priority-medium {
+    border-left: 4px solid var(--accent-blue);
+    background: rgba(74, 158, 255, 0.05);
+}
+
+.recommendation-card.priority-low {
+    border-left: 4px solid var(--success);
+    background: rgba(74, 222, 128, 0.05);
+}
+
+/* Action Timer Styles */
+.action-timer {
+    background: linear-gradient(135deg, var(--bg-card), rgba(74, 158, 255, 0.1));
+    border: 1px solid rgba(74, 158, 255, 0.3);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.timer-display {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--accent-blue);
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+}
+
+.timer-message {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 15px 0;
+}
+
+.action-button {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-orange));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(74, 158, 255, 0.3);
+}
+
+.action-button:active {
+    transform: translateY(0);
+}
+
+/* Demo Banner */
+.demo-banner {
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.2), rgba(74, 158, 255, 0.2));
+    border: 1px solid rgba(255, 140, 66, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.demo-banner p {
+    margin: 0 0 10px 0;
+    font-weight: 500;
+}
+
+.demo-banner button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.demo-banner button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Pulse Animation for Critical Alerts */
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.critical-alert {
+    animation: pulse 2s infinite;
+}
+
+/* Status Indicators */
+.status-good { color: var(--success); }
+.status-warning { color: var(--warning); }
+.status-danger { color: var(--danger); }
+
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-indicator.good { background: var(--success); }
+.status-indicator.warning { background: var(--warning); }
+.status-indicator.danger { background: var(--danger); }
+
+/* Tooltip Enhancement */
+.metric-card:hover {
+    position: relative;
+}
+
+.metric-card[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.metric-card[data-tooltip]:hover::after {
+    opacity: 1;
+}
+
+/* Research Feature Badges */
+.research-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    color: white;
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cognitive-enhancement { border-color: #8b5cf6; }
+.melatonin-protection { border-color: #ec4899; }
+.retinal-protection { border-color: #f59e0b; }

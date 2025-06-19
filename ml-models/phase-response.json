@@ -1,0 +1,25 @@
+{
+  "description": "Simplified Phase Response Curve based on Khalsa et al. 2003",
+  "curve_data": {
+    "time_points": [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24],
+    "phase_shifts": [-2.5, -3.0, -2.5, -1.0, 0.5, 1.5, 1.0, 0.5, 0.2, 0.0, -0.5, -1.5, -2.5],
+    "intensity_thresholds": {
+      "low": 10,
+      "moderate": 100,
+      "high": 1000,
+      "very_high": 10000
+    }
+  },
+  "recommendations": {
+    "advance": {
+      "optimal_time": "06:00-10:00",
+      "min_intensity": 250,
+      "duration": 30
+    },
+    "delay": {
+      "avoid_time": "22:00-02:00",
+      "max_intensity": 50,
+      "duration": 120
+    }
+  }
+}

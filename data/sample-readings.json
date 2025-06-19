@@ -1,0 +1,399 @@
+{
+  "metadata": {
+    "description": "Sample light readings for CircadianSync testing and demo mode",
+    "version": "1.0.0",
+    "created": "2025-06-19",
+    "source": "Simulated OPT4080 sensor data based on realistic lighting scenarios"
+  },
+  "scenarios": {
+    "typical_office_day": [
+      {
+        "time": "07:00",
+        "description": "Early morning - dim indoor lighting",
+        "readings": {
+          "red": 45,
+          "green": 52,
+          "blue": 58,
+          "clear": 155,
+          "photopic": 89,
+          "melanopic": 71,
+          "colorTemp": 3200
+        }
+      },
+      {
+        "time": "08:30",
+        "description": "Commute - outdoor morning light",
+        "readings": {
+          "red": 180,
+          "green": 220,
+          "blue": 285,
+          "clear": 685,
+          "photopic": 412,
+          "melanopic": 387,
+          "colorTemp": 5800
+        }
+      },
+      {
+        "time": "10:00",
+        "description": "Office work - fluorescent lighting",
+        "readings": {
+          "red": 95,
+          "green": 125,
+          "blue": 142,
+          "clear": 362,
+          "photopic": 298,
+          "melanopic": 234,
+          "colorTemp": 4200
+        }
+      },
+      {
+        "time": "12:30",
+        "description": "Lunch break - outdoor daylight",
+        "readings": {
+          "red": 320,
+          "green": 415,
+          "blue": 520,
+          "clear": 1255,
+          "photopic": 875,
+          "melanopic": 796,
+          "colorTemp": 6200
+        }
+      },
+      {
+        "time": "15:00",
+        "description": "Afternoon office - window seat",
+        "readings": {
+          "red": 145,
+          "green": 185,
+          "blue": 225,
+          "clear": 555,
+          "photopic": 445,
+          "melanopic": 389,
+          "colorTemp": 5200
+        }
+      },
+      {
+        "time": "18:00",
+        "description": "Evening commute - twilight",
+        "readings": {
+          "red": 85,
+          "green": 95,
+          "blue": 105,
+          "clear": 285,
+          "photopic": 175,
+          "melanopic": 142,
+          "colorTemp": 4800
+        }
+      },
+      {
+        "time": "20:00",
+        "description": "Home evening - warm LED lighting",
+        "readings": {
+          "red": 75,
+          "green": 68,
+          "blue": 45,
+          "clear": 188,
+          "photopic": 125,
+          "melanopic": 56,
+          "colorTemp": 2700
+        }
+      },
+      {
+        "time": "22:30",
+        "description": "Pre-sleep - dim warm lighting",
+        "readings": {
+          "red": 25,
+          "green": 18,
+          "blue": 8,
+          "clear": 51,
+          "photopic": 35,
+          "melanopic": 12,
+          "colorTemp": 2200
+        }
+      }
+    ],
+    "shift_worker_night": [
+      {
+        "time": "20:00",
+        "description": "Night shift start - bright workplace",
+        "readings": {
+          "red": 125,
+          "green": 155,
+          "blue": 185,
+          "clear": 465,
+          "photopic": 385,
+          "melanopic": 322,
+          "colorTemp": 4800
+        }
+      },
+      {
+        "time": "23:00",
+        "description": "Late night work - full artificial lighting",
+        "readings": {
+          "red": 135,
+          "green": 165,
+          "blue": 195,
+          "clear": 495,
+          "photopic": 412,
+          "melanopic": 348,
+          "colorTemp": 4900
+        }
+      },
+      {
+        "time": "02:00",
+        "description": "Deep night - maintaining alertness",
+        "readings": {
+          "red": 145,
+          "green": 175,
+          "blue": 205,
+          "clear": 525,
+          "photopic": 435,
+          "melanopic": 371,
+          "colorTemp": 5000
+        }
+      },
+      {
+        "time": "05:00",
+        "description": "Pre-dawn - bright light therapy",
+        "readings": {
+          "red": 165,
+          "green": 195,
+          "blue": 235,
+          "clear": 595,
+          "photopic": 485,
+          "melanopic": 418,
+          "colorTemp": 5200
+        }
+      },
+      {
+        "time": "07:00",
+        "description": "End of shift - sunrise exposure",
+        "readings": {
+          "red": 185,
+          "green": 215,
+          "blue": 255,
+          "clear": 655,
+          "photopic": 525,
+          "melanopic": 456,
+          "colorTemp": 5400
+        }
+      }
+    ],
+    "seasonal_variations": {
+      "winter_day": [
+        {
+          "time": "08:00",
+          "description": "Winter morning - overcast sky",
+          "readings": {
+            "red": 65,
+            "green": 85,
+            "blue": 115,
+            "clear": 265,
+            "photopic": 185,
+            "melanopic": 168,
+            "colorTemp": 6000
+          }
+        },
+        {
+          "time": "12:00",
+          "description": "Winter noon - bright overcast",
+          "readings": {
+            "red": 125,
+            "green": 165,
+            "blue": 225,
+            "clear": 515,
+            "photopic": 365,
+            "melanopic": 335,
+            "colorTemp": 6200
+          }
+        },
+        {
+          "time": "16:00",
+          "description": "Winter afternoon - low sun",
+          "readings": {
+            "red": 95,
+            "green": 105,
+            "blue": 125,
+            "clear": 325,
+            "photopic": 215,
+            "melanopic": 189,
+            "colorTemp": 5200
+          }
+        }
+      ],
+      "summer_day": [
+        {
+          "time": "06:00",
+          "description": "Summer sunrise - golden hour",
+          "readings": {
+            "red": 235,
+            "green": 195,
+            "blue": 125,
+            "clear": 555,
+            "photopic": 465,
+            "melanopic": 245,
+            "colorTemp": 3200
+          }
+        },
+        {
+          "time": "12:00",
+          "description": "Summer noon - clear sky",
+          "readings": {
+            "red": 285,
+            "green": 345,
+            "blue": 425,
+            "clear": 1055,
+            "photopic": 785,
+            "melanopic": 712,
+            "colorTemp": 5800
+          }
+        },
+        {
+          "time": "19:00",
+          "description": "Summer evening - golden hour",
+          "readings": {
+            "red": 205,
+            "green": 165,
+            "blue": 95,
+            "clear": 465,
+            "photopic": 385,
+            "melanopic": 195,
+            "colorTemp": 2800
+          }
+        }
+      ]
+    },
+    "indoor_environments": {
+      "modern_office": {
+        "description": "LED lighting with daylight harvesting",
+        "readings": {
+          "red": 115,
+          "green": 145,
+          "blue": 175,
+          "clear": 435,
+          "photopic": 345,
+          "melanopic": 289,
+          "colorTemp": 4500
+        }
+      },
+      "traditional_office": {
+        "description": "Fluorescent T8 lighting",
+        "readings": {
+          "red": 95,
+          "green": 125,
+          "blue": 135,
+          "clear": 355,
+          "photopic": 285,
+          "melanopic": 218,
+          "colorTemp": 4000
+        }
+      },
+      "home_kitchen": {
+        "description": "Warm white LED under-cabinet",
+        "readings": {
+          "red": 85,
+          "green": 75,
+          "blue": 55,
+          "clear": 215,
+          "photopic": 165,
+          "melanopic": 73,
+          "colorTemp": 3000
+        }
+      },
+      "bedroom_evening": {
+        "description": "Dim warm bedside lamp",
+        "readings": {
+          "red": 35,
+          "green": 28,
+          "blue": 15,
+          "clear": 78,
+          "photopic": 55,
+          "melanopic": 21,
+          "colorTemp": 2400
+        }
+      },
+      "hospital_ward": {
+        "description": "Circadian lighting system",
+        "readings": {
+          "red": 105,
+          "green": 135,
+          "blue": 165,
+          "clear": 405,
+          "photopic": 325,
+          "melanopic": 272,
+          "colorTemp": 4200
+        }
+      }
+    },
+    "light_therapy": {
+      "morning_therapy": {
+        "description": "10,000 lux light box session",
+        "readings": {
+          "red": 425,
+          "green": 515,
+          "blue": 625,
+          "clear": 1565,
+          "photopic": 1285,
+          "melanopic": 1156,
+          "colorTemp": 6000
+        }
+      },
+      "blue_light_therapy": {
+        "description": "Blue-enriched therapy light",
+        "readings": {
+          "red": 85,
+          "green": 165,
+          "blue": 385,
+          "clear": 635,
+          "photopic": 345,
+          "melanopic": 412,
+          "colorTemp": 7500
+        }
+      },
+      "red_light_therapy": {
+        "description": "Evening red light for sleep prep",
+        "readings": {
+          "red": 155,
+          "green": 25,
+          "blue": 5,
+          "clear": 185,
+          "photopic": 95,
+          "melanopic": 15,
+          "colorTemp": 1800
+        }
+      }
+    }
+  },
+  "validation_ranges": {
+    "photopic_lux": {
+      "min": 0,
+      "max": 100000,
+      "typical_indoor": "100-1000",
+      "typical_outdoor": "1000-100000"
+    },
+    "melanopic_lux": {
+      "min": 0,
+      "max": 100000,
+      "circadian_threshold": 30,
+      "strong_activation": 300,
+      "saturation": 1000
+    },
+    "color_temperature": {
+      "min": 1500,
+      "max": 15000,
+      "warm": "2000-3000",
+      "neutral": "3500-4500",
+      "cool": "5000-6500",
+      "daylight": "6000-7000"
+    }
+  },
+  "measurement_notes": [
+    "All readings calibrated for OPT4080 sensor characteristics",
+    "RGB values are 8-bit (0-255) from sensor processing",
+    "Clear channel represents broadband light intensity",
+    "Photopic lux calculated using CIE photopic curve",
+    "Melanopic lux uses α-opic melanopic efficiency function",
+    "Color temperature calculated using McCamy approximation",
+    "Real-world readings may vary ±20% due to environmental factors"
+  ]
+}

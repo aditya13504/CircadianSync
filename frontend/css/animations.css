@@ -1,0 +1,239 @@
+/* Animation Styles */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Pulse Animation for Important Alerts */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Glow Effect */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px var(--accent-blue);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--accent-blue), 0 0 30px var(--accent-blue);
+    }
+    100% {
+        box-shadow: 0 0 5px var(--accent-blue);
+    }
+}
+
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Number Count Animation */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.count-up {
+    animation: countUp 0.5s ease-out;
+}
+
+/* Wave Animation for Light Visualization */
+@keyframes wave {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.wave-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.wave-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), 
+        transparent);
+    animation: wave 3s linear infinite;
+}
+
+/* Clock Hand Animation */
+@keyframes clockRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Connection Status Animation */
+@keyframes connectionPulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.connecting {
+    animation: connectionPulse 1.5s ease-in-out infinite;
+}
+
+/* Metric Update Animation */
+.metric-update {
+    position: relative;
+}
+
+.metric-update::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(74, 158, 255, 0.3);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.metric-update.updating::after {
+    opacity: 1;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Recommendation Card Entry */
+.recommendation-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.recommendation-card:nth-child(1) { animation-delay: 0.1s; }
+.recommendation-card:nth-child(2) { animation-delay: 0.2s; }
+.recommendation-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Timer Countdown Effect */
+@keyframes timerPulse {
+    0% {
+        transform: scale(1);
+        color: var(--text-primary);
+    }
+    50% {
+        transform: scale(1.02);
+        color: var(--accent-orange);
+    }
+    100% {
+        transform: scale(1);
+        color: var(--text-primary);
+    }
+}
+
+.timer-active {
+    animation: timerPulse 1s ease-in-out infinite;
+}
+
+/* Success Animation */
+@keyframes success {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.success-animation {
+    animation: success 0.5s ease-out;
+}
+
+/* Loading Shimmer */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(
+        90deg,
+        var(--bg-card) 25%,
+        rgba(255, 255, 255, 0.1) 50%,
+        var(--bg-card) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}

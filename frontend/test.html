@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CircadianSync Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #1a1a1a; 
+            color: white; 
+            padding: 20px; 
+        }
+        .status { 
+            background: #333; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin: 10px 0; 
+        }
+    </style>
+</head>
+<body>
+    <h1>CircadianSync - Module Test</h1>
+    
+    <div class="status" id="test-status">Testing modules...</div>
+    <div class="status" id="sensor-status">Sensor: Not tested</div>
+    <div class="status" id="calc-status">Calculations: Not tested</div>
+    <div class="status" id="d3-status">D3.js: Not tested</div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="module">
+        // Test basic module loading
+        console.log('Starting module tests...');
+        
+        // Test D3
+        try {
+            if (typeof d3 !== 'undefined') {
+                document.getElementById('d3-status').textContent = 'D3.js: ✓ Loaded';
+                console.log('D3 version:', d3.version);
+            } else {
+                document.getElementById('d3-status').textContent = 'D3.js: ✗ Failed';
+            }
+        } catch (e) {
+            document.getElementById('d3-status').textContent = 'D3.js: ✗ Error - ' + e.message;
+        }
+        
+        // Test module imports
+        try {
+            import('./js/sensor.js').then(module => {
+                document.getElementById('sensor-status').textContent = 'Sensor: ✓ Loaded';
+                console.log('Sensor module loaded:', module);
+            }).catch(e => {
+                document.getElementById('sensor-status').textContent = 'Sensor: ✗ Failed - ' + e.message;
+                console.error('Sensor import error:', e);
+            });
+            
+            import('./js/calculations.js').then(module => {
+                document.getElementById('calc-status').textContent = 'Calculations: ✓ Loaded';
+                console.log('Calculations module loaded:', module);
+            }).catch(e => {
+                document.getElementById('calc-status').textContent = 'Calculations: ✗ Failed - ' + e.message;
+                console.error('Calculations import error:', e);
+            });
+            
+            document.getElementById('test-status').textContent = 'Module loading initiated...';
+            
+        } catch (e) {
+            document.getElementById('test-status').textContent = 'Module test failed: ' + e.message;
+            console.error('Module test error:', e);
+        }
+    </script>
+</body>
+</html>

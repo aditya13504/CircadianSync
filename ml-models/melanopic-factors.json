@@ -1,0 +1,18 @@
+{
+  "description": "CIE S 026/E:2018 melanopic action spectrum factors",
+  "rgb_weights": {
+    "red": 0.001,
+    "green": 0.754,
+    "blue": 0.245
+  },
+  "conversion_factor": 1.3262,
+  "reference_illuminant": "D65",
+  "peak_sensitivity": 480,
+  "thresholds": {
+    "circadian_minimum": 10,
+    "melatonin_suppression": 30,
+    "alerting_minimum": 100,
+    "optimal_day": 250,
+    "bright_light": 1000
+  }
+}
